@@ -1,0 +1,7 @@
+#!/bin/bash -e
+cwd=`dirname "${0}"`; expr "${0}" : "/.*" > /dev/null || cwd=`(cd ${cwd} && pwd)`; cd ${cwd}/../
+
+docker run --rm -i \
+  --env-file .env \
+  -v ~/.aws:/root/.aws \
+  -v $(pwd)/tmp:/mnt/tmp weaveworks/eksctl:$EKSCTL_VER "${@}"
