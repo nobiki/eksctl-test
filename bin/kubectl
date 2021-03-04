@@ -1,8 +1,0 @@
-#!/bin/bash -e
-cwd=`dirname "${0}"`; expr "${0}" : "/.*" > /dev/null || cwd=`(cd ${cwd} && pwd)`; cd ${cwd}/../
-
-docker run --rm -i \
-  --name kubectl \
-  --env-file .env \
-  --net=host \
-  bitnami/kubectl:$K8S_VER "${@}"
