@@ -1,14 +1,4 @@
-eksctl create cluster \
-  --name=obk-test \
-  --region=ap-northeast-1 \
-  --version=$K8S_VER \
-  --node-type=t3.medium \
-  --nodes=2 \
-  --nodes-min=2 \
-  --nodes-max=2 \
-  --node-volume-size=20
-
-  # --name=obk-test-cluster \  #クラスタ名
+  # --name=obk-test \          #クラスタ名
   # --region=ap-northeast-1 \  #リージョン
   # --version=1.18 \           #バージョン
   # --node-type=t3.medium \    #Workerインスタンスタイプ
@@ -16,3 +6,10 @@ eksctl create cluster \
   # --nodes-min=2 \            #Workerオートスケール最小
   # --nodes-max=2 \            #Workerオートスケール最大
   # --node-volume-size=20      #Workerディスクサイズ
+
+AWS_REGION=ap-northeast-1
+eksctl create cluster \
+  --name=obk-ekshandson \
+  --version ${K8S_VER} \
+  --nodes=3 --managed \
+  --region ${AWS_REGION} --zones ${AWS_REGION}a,${AWS_REGION}c
