@@ -1,7 +1,7 @@
 eksctl create cluster \
   --name=obk-test \
   --region=ap-northeast-1 \
-  --version=1.18 \
+  --version=$K8S_VER \
   --node-type=t3.medium \
   --nodes=2 \
   --nodes-min=2 \

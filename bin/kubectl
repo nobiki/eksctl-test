@@ -2,8 +2,7 @@
 cwd=`dirname "${0}"`; expr "${0}" : "/.*" > /dev/null || cwd=`(cd ${cwd} && pwd)`; cd ${cwd}/../
 
 docker run --rm -i \
-  --name eksctl \
+  --name kubectl \
   --env-file .env \
   --net=host \
-  -v ~/.aws:/root/.aws \
-  -v $(pwd)/tmp:/mnt/tmp weaveworks/eksctl:$EKSCTL_VER "${@}"
+  bitnami/kubectl:$K8S_VER "${@}"
