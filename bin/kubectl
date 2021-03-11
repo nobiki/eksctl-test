@@ -1,0 +1,9 @@
+#!/bin/bash -e
+cwd=`dirname "${0}"`; expr "${0}" : "/.*" > /dev/null || cwd=`(cd ${cwd} && pwd)`; cd ${cwd}/../
+
+docker run --rm -i \
+  --name kubectl \
+  --env-file .env \
+  --net=host \
+  -v ~/.aws:/root/.aws \
+  -v $(pwd)/tmp:/mnt/tmp bitnami/kubectl:$KUBECTL_VER "${@}"
