@@ -7,9 +7,14 @@
   # --nodes-max=2 \            #Workerオートスケール最大
   # --node-volume-size=20      #Workerディスクサイズ
 
-AWS_REGION=ap-northeast-1
 eksctl create cluster \
-  --name=obk-ekshandson \
-  --version ${K8S_VER} \
-  --nodes=3 --managed \
-  --region ${AWS_REGION} --zones ${AWS_REGION}a,${AWS_REGION}c
+    --vpc-cidr 10.0.0.0/16 \
+    --vpc-nat-mode HighlyAvailable \
+    --region ${AWS_REGION} --zones ${AWS_REGION}a,${AWS_REGION}c \
+    --name obk-eks-handson \
+    --version ${K8S_VER} \
+    --nodegroup-name ng-sample \
+    --node-type t3.small \
+    --nodes 3 \
+    --nodes-min 2 \
+    --nodes-max 4

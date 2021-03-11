@@ -1,1 +1,1 @@
-eksctl delete cluster --name=obk-test
+eksctl delete cluster --name=obk-eks-handson --region=${AWS_REGION}

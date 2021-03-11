@@ -4,5 +4,6 @@ cwd=`dirname "${0}"`; expr "${0}" : "/.*" > /dev/null || cwd=`(cd ${cwd} && pwd)
 docker run --rm -i \
   --env-file .env \
   -v ~/.aws:/root/.aws \
+  -v ~/.kube:/root/.kube \
   -v $(pwd)/tmp:/mnt/tmp \
   -v $(pwd):/aws amazon/aws-cli "${@}"

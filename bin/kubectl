@@ -6,4 +6,5 @@ docker run --rm -i \
   --env-file .env \
   --net=host \
   -v ~/.aws:/root/.aws \
+  -v ~/.kube:/root/.kube \
   -v $(pwd)/tmp:/mnt/tmp bitnami/kubectl:$KUBECTL_VER "${@}"
